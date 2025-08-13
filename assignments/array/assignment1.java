@@ -978,3 +978,436 @@ class fifteen{
 }
 */
 
+//Q.16 ) given a string S consisting only '0's and '1's. find the last index of the '1' present in it 
+//input:- 00001
+//output:- 4
+/*
+import java.io.*;
+class sixteen{
+
+	public static void main(String []args)throws IOException{
+	
+		BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+		System.out.println("Enter the string :- ");
+		String  S=br.readLine();
+		System.out.println("YOu enter string is :- "+S);
+
+                int lastindex=-1;
+		for(int i=0;i<S.length();i++){
+		
+			if(S.charAt(i)=='1'){
+			
+				lastindex=i;
+			}
+		}
+		if(lastindex!=-1){
+		
+			System.out.println(lastindex);
+		}else{
+		
+			System.out.println("1 is not present in the string ");
+		}
+	}
+}
+*/
+
+//Q.17) product of maximum in first array and minimum in second ,Given two array A and B respectively of size N1 and N2 the task is to calculate the product of the maximum element of the first array and minimum elemet of the second
+//input:- A[]={5,7,9,3,6,2}
+//        S[]={1,2,6,-1,0,9}
+//output:- 0 
+//Expected timecomplexity isO(N+M)
+//and auxillary space :O(1)
+//
+/*
+import java.io.*;
+class seventeen{
+
+	static void getelement(int arr[],int N,BufferedReader br)throws IOException{
+	
+	         System.out.println("Enter the element in the array:- ");
+		 for(int i=0;i<N;i++){
+		 
+			 arr[i]=Integer.parseInt(br.readLine());
+		 }
+
+	}
+	static void printthearray(int arr[],int N){
+	
+		System.out.print("Printing array :- ");
+		for(int i=0;i<N;i++){
+		
+			System.out.print(arr[i]+"  ");
+		}
+		System.out.println();
+	}
+        public static void main(String []args)throws IOException{
+
+                BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+                System.out.println("Enter the fist string length  ");
+		int N1=Integer.parseInt(br.readLine());
+		int A[]=new int[N1];
+		getelement(A,N1,br);
+		printthearray(A,N1);
+		
+                System.out.println("Enter the second string length  ");
+		int N2=Integer.parseInt(br.readLine());
+		int B[]=new int[N2];
+		getelement(B,N2,br);
+		printthearray(B,N2);
+
+
+               int max=Integer.MIN_VALUE;
+	       int min=Integer.MAX_VALUE;
+
+	       for(int i=0;i<N1;i++){
+	       
+		       if(A[i]>max){
+		       
+			       max=A[i];
+		       }
+	       }
+
+	       for(int i=0;i<N2;i++){
+	       
+		       if(B[i]<min){
+		       
+			       min=B[i];
+		       }
+	       }
+	       System.out.println("The product of max element :- "+max+" of first and min element "+min+"  of second is "+(min*max));
+
+        }
+}
+*/
+
+//Q.18) Find the subarray with given sum ,Given a array[] of non negative integers and  an integer sum , find a subarray  thats adds to a given sum 
+//note:- there may more than  one subarray  with sum as the given sum ,print first such aubarray 
+/*
+import java.io.*;
+class eightteen{
+
+        static void getelement(int arr[],int N,BufferedReader br)throws IOException{
+
+                 System.out.println("Enter the element in the array:- ");
+                 for(int i=0;i<N;i++){
+
+                         arr[i]=Integer.parseInt(br.readLine());
+                 }
+
+        }
+        static void printthearray(int arr[],int N){
+
+                System.out.print("Printing array :- ");
+                for(int i=0;i<N;i++){
+
+                        System.out.print(arr[i]+"  ");
+                }
+                System.out.println();
+        }
+
+	public static void main(String[]args)throws IOException{
+
+                BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+                System.out.println("Enter the  length of array   ");
+                int N=Integer.parseInt(br.readLine());
+                int A[]=new int[N];
+                getelement(A,N,br);
+                printthearray(A,N);
+
+		System.out.println("enter the sum :- ");
+		int sum=Integer.parseInt(br.readLine());
+                
+		for(int i=0;i<N;i++){
+                       int start=i;
+		       int add=0;
+		       for(int j=i;j<N;j++){
+		       
+			       add=add+A[j];
+			       if(add==sum){
+			       
+				       System.out.println("Sum found between indexes "+start+" and "+j);
+				       return;
+			       }else if(add>sum){
+			       
+				       break;
+
+			       }
+		       }
+
+		}
+		System.out.println("there is no Subarray with 0 sum  ");
+
+	}
+}
+*/
+
+//Q.19)//Find the common element in three sorted array
+/*
+import java.io.*;
+class nineteen{
+        static void getelement(int arr[],int N,BufferedReader br)throws IOException{
+                 System.out.println("Enter the element in the array:- ");
+                 for(int i=0;i<N;i++){
+                         arr[i]=Integer.parseInt(br.readLine());
+                 }
+        }
+        static void printthearray(int arr[],int N){
+                System.out.print("Printing array :- ");
+                for(int i=0;i<N;i++){
+                        System.out.print(arr[i]+"  ");
+                }
+                System.out.println();
+        }
+	public static void main(String[]args )throws IOException{
+	
+                BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+                System.out.println("Enter the  length of first array   ");
+                int N1=Integer.parseInt(br.readLine());
+                int A[]=new int[N1];
+                getelement(A,N1,br);
+                printthearray(A,N1);
+                
+		System.out.println("Enter the  length of second  array   ");
+                int N2=Integer.parseInt(br.readLine());
+                int B[]=new int[N2];
+                getelement(B,N2,br);
+                printthearray(B,N2);
+                
+		System.out.println("Enter the  length of third  array   ");
+                int N3=Integer.parseInt(br.readLine());
+                int C[]=new int[N3];
+                getelement(C,N3,br);
+                printthearray(C,N3);
+               
+		for(int i=0;i<A.length;i++){
+		
+			for(int j=0;j<B.length;j++){
+			
+
+				if(A[i]==B[j]){
+				
+					for(int k=0;k<C.length;k++){
+
+						if(B[j]==C[k]){
+						
+							System.out.print(C[k]+"  ");
+						}else if(B[j]<C[k]){
+						
+							break;
+						}
+					
+
+					}
+				}else if(A[i]<B[j]){
+				
+					break;
+				}
+			}
+		}
+		System.out.println();
+
+	}
+}
+*/
+
+//one more apporach for Q19) 
+/*
+import java.io.*;
+class nineteen2{
+        static void getelement(int arr[],int N,BufferedReader br)throws IOException{
+                 System.out.println("Enter the element in the array:- ");
+                 for(int i=0;i<N;i++){
+                         arr[i]=Integer.parseInt(br.readLine());
+                 }
+        }
+        static void printthearray(int arr[],int N){
+                System.out.print("Printing array :- ");
+                for(int i=0;i<N;i++){
+                        System.out.print(arr[i]+"  ");
+                }
+                System.out.println();
+        }
+        public static void main(String[]args )throws IOException{
+
+                BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+                System.out.println("Enter the  length of first array   ");
+                int N1=Integer.parseInt(br.readLine());
+                int A[]=new int[N1];
+                getelement(A,N1,br);
+                printthearray(A,N1);
+
+                System.out.println("Enter the  length of second  array   ");
+                int N2=Integer.parseInt(br.readLine());
+                int B[]=new int[N2];
+                getelement(B,N2,br);
+                printthearray(B,N2);
+
+                System.out.println("Enter the  length of third  array   ");
+                int N3=Integer.parseInt(br.readLine());
+                int C[]=new int[N3];
+                getelement(C,N3,br);
+                printthearray(C,N3);
+
+               int l1=A.length;int l2=B.length;int l3=C.length;
+	       int i=0;int j=0;int k=0;
+	       while(i<l1&&j<l2&&k<l3){
+	       
+		       if(A[i]==B[j]&&B[j]==C[k]){
+		       
+			       System.out.print(A[i]+"  ");
+			       i++;j++;k++;
+		       }else if(A[i]<B[j]){
+		       
+			       i++;
+		       }else if (B[j]<C[k]){
+		       
+			       j++;
+		       }else{
+		       
+			       k++;
+		       }
+
+	       }
+	       System.out.println();
+	}
+}
+*/
+
+//Q.20)Check if  pair with given sum exists in array (Two Sum),Given an array A[]of n number and another number x, the task is to check  whether or not there is exist two element  in A[] whose sum is exactly x
+/*
+import java.io.*;
+class twenty{
+        static void getelement(int arr[],int N,BufferedReader br)throws IOException{
+                 System.out.println("Enter the element in the array:- ");
+                 for(int i=0;i<N;i++){
+                         arr[i]=Integer.parseInt(br.readLine());
+                 }
+        }
+        static void printthearray(int arr[],int N){
+                System.out.print("Printing array :- ");
+                for(int i=0;i<N;i++){
+                        System.out.print(arr[i]+"  ");
+                }
+                System.out.println();
+        }
+        public static void main(String[]args )throws IOException{
+
+                BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+                System.out.println("Enter the  length of first array   ");
+                int N1=Integer.parseInt(br.readLine());
+                int A[]=new int[N1];
+                getelement(A,N1,br);
+                printthearray(A,N1);
+                
+		System.out.println("Enter the  xnumber :- ");
+                int X=Integer.parseInt(br.readLine());
+                int len=A.length;
+		for(int i=0;i<len-1;i++){
+		
+			for(int j=i+1;j<len;j++){
+			
+				int sum=A[i]+A[j];
+				if(sum==X){
+				
+					System.out.println("Yes ");
+					return;
+				}
+			}
+		}
+		System.out.println("No");
+	}
+}
+*/
+
+
+/*
+//Q.21) Find the first element  to occure k times 
+//Given an array  of N integers , find the first  element that occurs at least K number of times 
+//input:- N=7;K=2;A[]={1,7,4,3,4,8,7};
+//output:- 4
+//time complexity :-O(N);
+//Space complexity :- O(N);
+//
+import java.io.*;
+import java.util.HashMap;
+class twentyone{
+
+	public static void main(String[]args)throws IOException{
+
+		BufferedReader br=new BufferedReader(new  InputStreamReader(System.in));
+		System.out.println("Enter the length of  array :- ");
+		int N=Integer.parseInt(br.readLine());
+		System.out.println("Enter the k :- ");
+		int K=Integer.parseInt(br.readLine());
+                int arr[]=new int[N];
+		for(int i=0;i<N;i++){
+		
+			arr[i]=Integer.parseInt(br.readLine());
+		}
+
+                HashMap<Integer, Integer> hm = new HashMap<>(); 	
+                for(int i=0;i<N;i++){
+		 
+		   int element=arr[i];
+		   if(hm.containsKey(element)){
+		           int add=hm.get(element)+1;
+			   hm.put(element,add);
+			   if(add==K){
+			   
+				   System.out.println("First element to occur " + K + " times is: " + element);
+				   return ;
+
+			   }
+
+		   }else{
+		    
+			   hm.put(element,1);
+
+		   }
+			
+		}
+	}
+}
+*/
+
+
+//Q.22) Exceptionally odd
+//Given an array of N  positive integers where all numbers  occur  even number of time except one number  which occurs odd number of times .
+//find the exceptional numbers
+//
+//expected time complexity : O(N)
+//space complexity : O(1)
+import java.io.*;
+class twentytwo{
+        static void getelement(int arr[],int N,BufferedReader br)throws IOException{
+                 System.out.println("Enter the element in the array:- ");
+                 for(int i=0;i<N;i++){
+                         arr[i]=Integer.parseInt(br.readLine());
+                 }
+        }
+        static void printthearray(int arr[],int N){
+                System.out.print("Printing array :- ");
+                for(int i=0;i<N;i++){
+                        System.out.print(arr[i]+"  ");
+                }
+                System.out.println();
+        }
+        public static void main(String[]args )throws IOException{
+
+                BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+                System.out.println("Enter the  length of first array   ");
+                int N1=Integer.parseInt(br.readLine());
+                int A[]=new int[N1];
+                getelement(A,N1,br);
+                printthearray(A,N1);
+                int result =0;
+		for(int num: A){
+		
+			result=result^num;   // XOR operation for cancelling same numbers 
+
+		}
+		System.out.println("here the  odd occure number is "+ result );
+
+
+	}
+}
