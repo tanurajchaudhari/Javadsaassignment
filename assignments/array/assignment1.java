@@ -1370,7 +1370,7 @@ class twentyone{
 }
 */
 
-
+/*
 //Q.22) Exceptionally odd
 //Given an array of N  positive integers where all numbers  occur  even number of time except one number  which occurs odd number of times .
 //find the exceptional numbers
@@ -1411,3 +1411,316 @@ class twentytwo{
 
 	}
 }
+*/
+
+
+/*
+//Q.23) find the smallest and second smallest element in the  array
+//Given an array of element , your task is tofind he smallest  and second smallest element in the array . 
+//if smallest  and second smallest do not exits then print -1.
+//time complexity : O(N)
+//space complexity: O(1)
+
+import java.io.*;
+class twentythree{
+        static void getelement(int arr[],int N,BufferedReader br)throws IOException{
+                 System.out.println("Enter the element in the array:- ");
+                 for(int i=0;i<N;i++){
+                         arr[i]=Integer.parseInt(br.readLine());
+                 }
+        }
+        static void printthearray(int arr[],int N){
+                System.out.print("Printing array :- ");
+                for(int i=0;i<N;i++){
+                        System.out.print(arr[i]+"  ");
+                }
+                System.out.println();
+        }
+        public static void main(String[]args )throws IOException{
+
+                BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+                System.out.println("Enter the  length of first array   ");
+                int N1=Integer.parseInt(br.readLine());
+                int A[]=new int[N1];
+                getelement(A,N1,br);
+                printthearray(A,N1);
+
+		int firstsmallest=Integer.MAX_VALUE;
+	        int  secondsmallest=Integer.MAX_VALUE;
+	        
+	        if(N1<2){
+		
+			System.out.println("-1");
+				return;
+		}	
+
+		for(int num: A){
+		
+			if(num <firstsmallest){
+			
+				secondsmallest=firstsmallest;
+				firstsmallest=num;
+			}else if(num !=firstsmallest && num < secondsmallest){
+			
+				secondsmallest=num;
+			}
+		}
+		if(secondsmallest==Integer.MAX_VALUE){
+		
+			System.out.println("-1");
+		}else{
+		
+			System.out.println("Smallest: " + firstsmallest);
+                        System.out.println("Second Smallest: " + secondsmallest);
+		}
+	}
+}
+*/
+
+//Q.24) Ceil the floor 
+//given an unsorted array Arr[]of N integres and an integers X, find floor and ceiling  of X in Arr[0..N-1], 
+//floor  of X is the largest element which is smaller than or equal to X . floor of X doesnt  exist if X is smaller than  the smallest elemnet of Arr[].
+//Ceil of X is the smallest  elemenet which is geater than or equal to X. Ceil of X dosent exist if X is greater than he greatest element of Arr[].
+//
+//time complexity : O(N)
+//space complexity : O(1)
+//example 1:  input : N=8,X=7 , Arr[]={5,6,8,9,6,5,5,6}
+//output: 6 8
+//explaination : floor of 7 is 6 and ceil of 7 is 8
+//example 2:  input : N=8,X=10 , Arr[]={5,6,8,9,6,5,5,6}
+//output: 9 -1
+//explaination : floor of 7 is 9 but ceil of 10 is not possible 
+/*
+import java.io.*;
+class twentyFour{
+
+	static void getElement(int N,int[]arr,BufferedReader br)throws IOException{
+	
+		System.out.println("Enter the element in the array :- ");
+                for(int i=0;i<N;i++){
+		
+			arr[i]=Integer.parseInt(br.readLine());
+		}
+
+	}
+	static void printElement(int N,int arr[]){
+	
+		System.out.println("Printing the array Element : - ");
+		for(int i=0;i<N;i++){
+		
+			System.out.print(arr[i]+"  ");
+		}
+		System.out.println();
+	}
+
+	public static void main(String[]args)throws IOException{
+	
+		BufferedReader br= new BufferedReader(new InputStreamReader(System.in));
+		System.out.println("Enter the length of array :- ");
+		int N=Integer.parseInt(br.readLine());
+		int Arr[]=new int[N];
+		getElement(N,Arr,br);
+		printElement(N,Arr);
+		System.out.println("Enter the key :- ");
+		int X=Integer.parseInt(br.readLine());
+		int floor=-1;int ceil=-1;
+		for(int num:Arr){
+		
+			if(num<=X){
+			
+				if(floor==-1 || floor<num){
+				
+					floor=num;
+				}
+			}
+			if(num>=X){
+			
+				if(ceil==-1 || ceil>num){
+				
+					ceil=num;
+				}
+			}
+		}
+		System.out.println("floor is :- "+floor+" And ceil is :- "+ceil);
+
+	}
+}
+*/
+
+//Q.15)Maximum product of two numbers 
+//Given an array of size N of size N with all element greater than or equal to zero .Return the maximum product of two numbers posiible 
+//time complexity : O(N)
+//space complexity:O(1);
+//constraints :   2<= N 10^7
+//                0<= Arr[i]<=10^4
+//
+/*
+import java.io.*;
+class twentyFive{
+
+        static void getElement(int N,int[]arr,BufferedReader br)throws IOException{
+
+                System.out.println("Enter the element in the array :- ");
+                for(int i=0;i<N;i++){
+
+                        arr[i]=Integer.parseInt(br.readLine());
+                }
+
+        }
+        static void printElement(int N,int arr[]){
+
+                System.out.println("Printing the array Element : - ");
+                for(int i=0;i<N;i++){
+
+                        System.out.print(arr[i]+"  ");
+                }
+                System.out.println();
+        }
+
+        public static void main(String[]args)throws IOException{
+
+                BufferedReader br= new BufferedReader(new InputStreamReader(System.in));
+                System.out.println("Enter the length of array :- ");
+                int N=Integer.parseInt(br.readLine());
+                int Arr[]=new int[N];
+                getElement(N,Arr,br);
+                printElement(N,Arr);
+	
+		int max1=-1;
+		int max2=-1;
+		
+		for(int num : Arr){
+		
+			if(num>max1){
+			
+				max2=max1;
+				max1=num;
+			}else if(num>max2){
+			
+				max2=num;
+			}
+		}
+		long product=(long)max1*max2;
+		System.out.println("The product of maximum numbers are the :- "+product);
+	}
+}
+*/
+
+//Q.26) Positive and negative element 
+//Given an array Arr[] containing  equal number of positive  and negative element arrange the array such that every positive elementis followed by a negative element
+//note : the relative order of positive and negativ numberss should  be maintained.
+//time complexity : O(N)
+//space complexity:O(1);
+/*
+import java.io.*;
+class twentySix{
+
+        static void getElement(int N,int[]arr,BufferedReader br)throws IOException{
+                System.out.println("Enter the element in the array first negative and then positive  alternatively in the array  :- ");
+                for(int i=0;i<N;i++){
+                        arr[i]=Integer.parseInt(br.readLine());
+                }
+        }
+        static void printElement(int N,int arr[]){
+
+                System.out.println("Printing the array Element : - ");
+                for(int i=0;i<N;i++){
+
+                        System.out.print(arr[i]+"  ");
+                }
+                System.out.println();
+        }
+
+        public static void main(String[]args)throws IOException{
+
+                BufferedReader br= new BufferedReader(new InputStreamReader(System.in));
+                System.out.println("Enter the length of array :- ");
+                
+		int N=Integer.parseInt(br.readLine());
+		if(N%2==1){
+		
+			System.out.println("Enter the even length of array Enter the number again  ");
+		        return;
+		}
+
+                int Arr[]=new int[N];
+                getElement(N,Arr,br);
+                printElement(N,Arr);
+                
+		for(int i=0;i<N;i++){
+		
+			if(i%2==0 && Arr[i]<0){
+			        int temp=-1;
+				temp=Arr[i];
+				Arr[i]=Arr[i+1];
+				Arr[i+1]=temp;
+			   
+			}
+		}
+		System.out.println("Array after the changing");
+		printElement(N,Arr);
+
+	}
+}
+*/
+
+
+//Q.27) cunt pair  sum
+// Gien two sorted arrays(arr1[] and arr2[]) of size M and N if distinct elements Given a value Sum. The problem is to count all pairs from both arrays whose sum is equal to sum 
+////time complexity : O(M+N)
+//space complexity:O(1);
+/*
+import java.io.*;
+class twentySeven{
+
+        static void getElement(int N,int[]arr,BufferedReader br)throws IOException{
+                System.out.println("Enter the element in the array sorted  :- ");
+                for(int i=0;i<N;i++){
+                        arr[i]=Integer.parseInt(br.readLine());
+                }
+        }
+        static void printElement(int N,int arr[]){
+
+                System.out.println("Printing the array Element : - ");
+                for(int i=0;i<N;i++){
+
+                        System.out.print(arr[i]+"  ");
+                }
+                System.out.println();
+        }
+
+        public static void main(String[]args)throws IOException{
+
+                BufferedReader br= new BufferedReader(new InputStreamReader(System.in));
+                System.out.println("Enter the length of first  array :- ");
+                int N=Integer.parseInt(br.readLine());
+                int Arr[]=new int[N];
+                getElement(N,Arr,br);
+                printElement(N,Arr);
+
+		System.out.println("Enter the length of second  array :- ");
+                int N2=Integer.parseInt(br.readLine());
+                int Arr2[]=new int[N2];
+	        getElement(N2,Arr2,br);
+                printElement(N2,Arr2);
+		System.out.println("Enter the sum ");
+		int sum=Integer.parseInt(br.readLine());
+		int count=0;
+		
+		for(int i=0;i<N;i++){
+		
+			for(int j=0;j<N2;j++){
+			
+				if(sum==Arr[i]+Arr2[j]){
+				
+					count++;
+				}
+			}
+		}
+		System.out.println("The count is :- "+count);
+		return;
+
+	}
+}
+*/
+
